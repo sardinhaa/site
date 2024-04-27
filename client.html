@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page with Docked Sidebar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            height: 100%;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-right: 1px solid #ccc;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            transition: width 0.3s ease-out;
+        }
+
+        .sidebar.docked {
+            width: 25%;
+        }
+
+        .sidebar h3 {
+            margin: 0;
+            margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            display: block;
+            text-decoration: none;
+            color: #333;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .sidebar a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .content {
+            width: calc(100% - 250px);
+            padding: 20px;
+            margin-left: 250px;
+            transition: margin-left 0.3s ease-out;
+        }
+
+        .content.docked {
+            width: 75%;
+            margin-left: 25%;
+        }
+
+        .content h1 {
+            margin: 0;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="sidebar" class="sidebar">
+            <h3>Navigation</h3>
+            <a href="#">Home</a>
+            <a href="#">Projects</a>
+            <a href="#">Support</a>
+            <a href="#">Contact</a>
+        </div>
+        <div id="content" class="content">
+            <h1>client</h1>
+           
+            <ps></ps>client</p>
+        </div>
+    </div>
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const content = document.getElementById('content');
+
+        const toggleSidebar = () => {
+            sidebar.classList.toggle('docked');
+            content.classList.toggle('docked');
+        }
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth < 768) {
+                sidebar.classList.remove('docked');
+                content.classList.remove('docked');
+            } else {
+                sidebar.classList.add('docked');
+                content.classList.add('docked');
+            }
+        });
+
+        document.getElementById('sidebar-toggle').addEventListener('click', toggleSidebar);
+    </script>
+</body>
+</html>
