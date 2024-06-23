@@ -51,6 +51,23 @@
         input[type="submit"]:hover {
             background-color: #0069d9;
         }
+
+        /* Add styles for the download button */
+        #download-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #download-btn:hover {
+            background-color: #3e8e41;
+        }
     </style>
 </head>
 <body>
@@ -61,6 +78,10 @@
         <input type="password" id="password" name="password" required><br>
         <input type="submit" value="Log In">
     </form>
+
+    <!-- Add a button to download the file -->
+    <button id="download-btn">Download teste.txt</button>
+
     <script>
         const users = [
             { username: 'admin', password: 'admin', page: () => { window.location.href = 'admin.html'; } },
@@ -80,14 +101,15 @@
                 alert('Invalid username or password. Please try again.');
             }
         });
+
+        // Add event listener to the download button
+        const downloadBtn = document.getElementById('download-btn');
+        downloadBtn.addEventListener('click', function () {
+            const link = document.createElement('a');
+            link.href = 'teste.txt';
+            link.download = 'teste.txt';
+            link.click();
+        });
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
